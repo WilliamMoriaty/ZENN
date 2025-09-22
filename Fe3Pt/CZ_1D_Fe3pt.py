@@ -96,7 +96,7 @@ class CoupledModel(nn.Module):
     def __init__(self, width, num_networks=24, kb=0.1):
         super(CoupledModel, self).__init__()
         self.num_networks = num_networks
-        self.sub_networks = nn.ModuleList([Two_NN(width) for _ in range(num_networks)])  # 6 个 Two_NN 子网络
+        self.sub_networks = nn.ModuleList([Two_NN(width) for _ in range(num_networks)])  # 6 Two_NN subnetworks
         self.kb = kb  # Boltzmann 
     def forward(self, x):
         # 
@@ -135,7 +135,7 @@ class CoupledModel(nn.Module):
 
         # Final output
         output = weighted_values + self.kb * T * weighted_log_probs
-        #output = (1/self.dx)*torch.softmax(-output/(self.T*self.kb), dim=1)  # 确保预测值是概率分布
+        #output = (1/self.dx)*torch.softmax(-output/(self.T*self.kb), dim=1)  # 
         
         return output, sub_network_outputs  # Return both final output and sub-network outputs
     
@@ -153,7 +153,7 @@ class KLDivergenceLoss(nn.Module):
         super(KLDivergenceLoss, self).__init__()
         self.reduction = reduction
         #self.T = nn.Parameter(torch.tensor(1.0, requires_grad=True))  # 
-        self.kb = kb  # Boltzmann 常数
+        self.kb = kb  # Boltzmann constant
         self.dx = dx # step size
         self.lambda_reg = lambda_reg  # Regularization weight for second derivative constraint
         self.num_networks = num_networks
