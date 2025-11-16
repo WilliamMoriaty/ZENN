@@ -60,7 +60,7 @@ def boltzmann_probability(V,x_vals,T, kb=0.1):
 # In[ ]:
 
 
-# 网络结构
+# 
 import torch
 import torch.nn as nn
 import numpy as np
@@ -96,10 +96,10 @@ class CoupledModel(nn.Module):
     def __init__(self, width, num_networks=24, kb=0.1):
         super(CoupledModel, self).__init__()
         self.num_networks = num_networks
-        self.sub_networks = nn.ModuleList([Two_NN(width) for _ in range(num_networks)])  # 6 个 Two_NN 子网络
-        self.kb = kb  # Boltzmann 常数
+        self.sub_networks = nn.ModuleList([Two_NN(width) for _ in range(num_networks)])  # 6 Two_NN subnetworks
+        self.kb = kb  # Boltzmann 
     def forward(self, x):
-        # 计算每对网络的未归一化输出
+        # 
         T = x[:, 1].unsqueeze(1)  # Shape: [batch_size, 1]
         logits = []
         values = []
@@ -135,7 +135,7 @@ class CoupledModel(nn.Module):
 
         # Final output
         output = weighted_values + self.kb * T * weighted_log_probs
-        #output = (1/self.dx)*torch.softmax(-output/(self.T*self.kb), dim=1)  # 确保预测值是概率分布
+        #output = (1/self.dx)*torch.softmax(-output/(self.T*self.kb), dim=1)  # 
         
         return output, sub_network_outputs  # Return both final output and sub-network outputs
     
@@ -144,7 +144,7 @@ class CoupledModel(nn.Module):
 # In[ ]:
 
 
-# 定义Jesen熵函数
+# 
 Nf=78
 xmin = -3
 xmax = 9
@@ -152,16 +152,16 @@ class KLDivergenceLoss(nn.Module):
     def __init__(self, reduction='batchmean',kb=0.1,dx=((xmax-xmin)/(Nf-1)),lambda_reg = 1e-4,num_networks=24):
         super(KLDivergenceLoss, self).__init__()
         self.reduction = reduction
-        #self.T = nn.Parameter(torch.tensor(1.0, requires_grad=True))  # 可训练参数 T
-        self.kb = kb  # Boltzmann 常数
+        #self.T = nn.Parameter(torch.tensor(1.0, requires_grad=True))  # 
+        self.kb = kb  # Boltzmann constant
         self.dx = dx # step size
         self.lambda_reg = lambda_reg  # Regularization weight for second derivative constraint
         self.num_networks = num_networks
     def forward(self,x, y_pred, y_true,model):
         T = x[:, 1].unsqueeze(1)  # Shape: [batch_size, 1]
-        y_pred = (1/self.dx)*torch.softmax(-y_pred/(T*self.kb), dim=0) # 确保预测值是概率分布
-        y_pred = torch.clamp(y_pred, min=1e-9, max=100)  # 避免 log(0)
-        y_true = torch.clamp(y_true, min=1e-9, max=100)  # 避免 log(0)
+        y_pred = (1/self.dx)*torch.softmax(-y_pred/(T*self.kb), dim=0) # 
+        y_pred = torch.clamp(y_pred, min=1e-9, max=100)  # avoid log(0)
+        y_true = torch.clamp(y_true, min=1e-9, max=100)  # avoid log(0)
         kl_pt = torch.sum(y_true * torch.log(y_true / (0.5*(y_pred+y_true))), dim=0)  # D_KL(P || Q)
         kl_tp = torch.sum(y_pred * torch.log(y_pred / (0.5*(y_pred+y_true))), dim=0)  # D_KL(Q || P)
         kl_loss = torch.mean(0.5 * (kl_pt + kl_tp)) if self.reduction == 'mean' else torch.sum(0.5 * (kl_pt + kl_tp))
@@ -233,24 +233,24 @@ print(y_train[25:39])
 # In[ ]:
 
 
-# 创建耦合模型
-width = 8  # Two_NN 隐藏层宽度
+# 
+width = 8  # Two_NN layers
 model = CoupledModel(width).to(device)
 
-# 创建优化器
+# 
 optimizer = optim.Adam(model.parameters(), lr=0.01)
 
-# 定义损失函数
+# 
 criterion = KLDivergenceLoss()
 
- #训练循环
+ #
 num_epochs = 30001
 for epoch in range(num_epochs):
-    optimizer.zero_grad()  # 清空梯度
-    y_pred,sub_outputs = model(X_T_train)  # 前向传播
-    loss = criterion(X_T_train,y_pred, y_train,model)  # 计算损失
-    loss.backward()  # 反向传播
-    optimizer.step()  # 更新参数
+    optimizer.zero_grad()  # 
+    y_pred,sub_outputs = model(X_T_train)  # 
+    loss = criterion(X_T_train,y_pred, y_train,model)  # 
+    loss.backward()  # 
+    optimizer.step()  # 
     
     if epoch % 100 == 0:
        print(f"Epoch [{epoch}/{num_epochs}] - Loss: {loss.item():.10f}")
