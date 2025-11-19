@@ -137,7 +137,7 @@ nvidia-smi --query-gpu=index,memory.used,memory.total --format=csv
 
 # Print output files location
 echo ""
-echo "Output files saved to: ./output_coupled_lora_agnews_K5/"
+echo "Output files saved to: ./output_coupled_lora_agnews_K3/"
 echo "  - train_losses.txt"
 echo "  - test_accuracies.txt"
 echo "  - test_epochs.txt"
