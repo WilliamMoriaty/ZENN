@@ -100,7 +100,7 @@ echo ""
 
 # Run DDP training with CoupledModel
 python train_couple_ddp.py \
-    --output-dir ./output_coupled_lora_agnews_K5 \
+    --output-dir ./output_coupled_lora_agnews_K3 \
     --model-name HuggingFaceTB/SmolLM2-135M \
     --hf-token ## \
     --epochs 10 \
@@ -120,7 +120,7 @@ python train_couple_ddp.py \
     --lora-alpha 16 \
     --lora-dropout 0.1 \
     --lora-target-modules q_proj,v_proj \
-    --K 5 \
+    --K 3 \
     --T-min 0.1 \
     --T-max 10.0 \
     --kb 1.0
