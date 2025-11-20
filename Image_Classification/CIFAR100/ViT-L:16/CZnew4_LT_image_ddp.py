@@ -477,8 +477,8 @@ def em_train_step_optimized_T(model, x, y_onehot, T_module, optimizer, scheduler
 @torch.no_grad()
 def evaluate_accuracy_posterior_labeled(model, loader, device, T_module):
     """
-    有标签评估：q(T|x,y) ∝ exp(-CE(p(y|x,T), y))，
-    再用 q(T|x,y) 对 p(y|x,T) 加权边缘化，取 argmax 评估准确率。
+    q(T|x,y) ∝ exp(-CZ(p(y|x,T), y))，
+    q(T|x,y) 对 p(y|x,T) 加权边缘化，取 argmax 评估准确率。
     """
     model.eval()
     correct = total = 0
