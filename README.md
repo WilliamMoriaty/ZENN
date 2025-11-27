@@ -11,10 +11,10 @@ All simulations were performed on a server equipped with eight NVIDIA A100 GPUs.
 
 <img width="843" height="376" alt="image" src="https://github.com/user-attachments/assets/2d17535c-e9a2-4d63-b380-db9d0be9b4ed" />
 
-Load Google ViT NPZ Weights
+Load Google ViT NPZ Weights (https://github.com/xxayt/ViT-for-Cifar100?tab=readme-ov-file)
 
-ViT_B/32: https://storage.googleapis.com/vit_models/imagenet21k/ViT_B/32.npz
-ViT_L/32:https://storage.googleapis.com/vit_models/imagenet21k/ViT_L/32.npz
-ViT_L/16:https://storage.googleapis.com/vit_models/imagenet21k/ViT_L/16.npz
+ViT_B/32: https://storage.googleapis.com/vit_models/imagenet21k/ViT-B_32.npz
+ViT_L/32:https://storage.googleapis.com/vit_models/imagenet21k/ViT-L_32.npz
+ViT_L/16:https://storage.googleapis.com/vit_models/imagenet21k/ViT-L_16.npz
 
 
