@@ -17,4 +17,14 @@ ViT_B/32: https://storage.googleapis.com/vit_models/imagenet21k/ViT-B_32.npz
 ViT_L/32:https://storage.googleapis.com/vit_models/imagenet21k/ViT-L_32.npz
 ViT_L/16:https://storage.googleapis.com/vit_models/imagenet21k/ViT-L_16.npz
 
+# Citation
+@misc{wang2025zennthermodynamicsinspiredcomputationalframework,
+      title={ZENN: A Thermodynamics-Inspired Computational Framework for Heterogeneous Data-Driven Modeling}, 
+      author={Shun Wang and Shun-Li Shang and Zi-Kui Liu and Wenrui Hao},
+      year={2025},
+      eprint={2505.09851},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG},
+      url={https://arxiv.org/abs/2505.09851}, 
+}
 
