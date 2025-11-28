@@ -346,7 +346,7 @@ def em_train_step_optimized_T(model, input_ids, attention_mask, y_onehot, T_modu
 def evaluate_accuracy_posterior_labeled(model, loader, device, T_module):
     """
     Evaluate accuracy using posterior q(T|x,y)
-    q(T|x,y) ∝ exp(-CE(p(y|x,T), y))
+    q(T|x,y) ∝ exp(-CZ(p(y|x,T), y))
     """
     model.eval()
     correct = total = 0

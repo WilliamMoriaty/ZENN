@@ -102,7 +102,7 @@ echo ""
 python train_couple_ddp.py \
     --output-dir ./output_coupled_360_lora_bbc_K3 \
     --model-name HuggingFaceTB/SmolLM2-360M \
-    --hf-token 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 \
+    --hf-token ### \
     --epochs 30 \
     --batch-size 4 \
     --grad-accum-steps 1 \
