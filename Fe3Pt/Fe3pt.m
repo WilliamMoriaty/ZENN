@@ -1,7 +1,7 @@
-free_data = readmatrix("Dataset2_Fe3pt_zentropy/Fe3Pt_free0_d1_d2.xlsx");
+free_data = readmatrix("Dataset2_Fe3pt_Zentropy/Fe3Pt_free0_d1_d2.xlsx");
 volume_data = free_data(163:end,1);
 T_data = free_data(1,2:end)';
-free_energy = free_data(163:end,2:end);
+free_Energy = free_data(163:end,2:end);
 T_data = 1+(4/595)*(T_data(1:120)-5);
 % T_data = log(1+T_data(1:120));
 dx = 6/38;
@@ -9,8 +9,8 @@ theta = -0.0408;%-0.0408
 kb = 0.1; 
 V = []; P = [];T = [];F=[];PP = [];
 for n=1:120
-x = volume_data(57:134)*cos(atan(theta))+free_energy(57:134,n)*sin(atan(theta));
-y = -volume_data(57:134)*sin(atan(theta))+free_energy(57:134,n)*cos(atan(theta));
+x = volume_data(57:134)*cos(atan(theta))+free_Energy(57:134,n)*sin(atan(theta));
+y = -volume_data(57:134)*sin(atan(theta))+free_Energy(57:134,n)*cos(atan(theta));
 nx = size(x,1);
 yy = y/(kb*T_data(n));
 yymin = 0;
@@ -31,8 +31,8 @@ Vn = 158.03; % VN normalized volume
 Fig2 = figure(2);
 clf();
 set(gcf,'Position',[207,333,1181,421])
-P_CZ = load('CZ_y_pred_Fe3pt_Free_energy.txt');
-% P_CZ = load('Fe3pt/CZ_y_pred_Fe3pt_Free_energy.txt');
+P_CZ = load('CZ_y_pred_Fe3pt_Free_Energy.txt');
+% P_CZ = load('Fe3pt/CZ_y_pred_Fe3pt_Free_Energy.txt');
 
 
 P_CZ = reshape(P_CZ,78,120);
@@ -46,9 +46,9 @@ hold on
 plot((148+(VV(:,nn)+3))/Vn, FF(:,nn),'r--','LineWidth',2.0)
 xlim([148,155]/Vn)
 xlabel('Volume (V/V_N)')
-ylabel('Free energy (F)')
+ylabel('Helmholtz Energy (F)')
 
-lg=legend('ZENN','DFT');
+lg=legend('Zentropy','DFT');
 lg.Box = 'off';
 
 title(strcat('T=',num2str(5+(595/4)*(T_data(nn)-1)),'K'),'FontSize',14,'FontWeight','bold')
@@ -63,7 +63,7 @@ hold on
 plot((148+(VV(:,nn)+3))/Vn, FF(:,nn),'r--','LineWidth',2.0)
 xlim([148,155]/Vn)
 xlabel('Volume (V/V_N)')
-ylabel('Free energy (F)')
+ylabel('Helmholtz Energy (F)')
 
 title(strcat('T=',num2str(5+(595/4)*(T_data(nn)-1)),'K'),'FontSize',14,'FontWeight','bold')
 % title(strcat('T=',num2str(exp(T_data(nn))-1),'K'),'FontSize',12,'FontWeight','bold')
@@ -77,7 +77,7 @@ hold on
 plot((148+(VV(:,nn)+3))/Vn, FF(:,nn),'r--','LineWidth',2.0)
 xlim([148,155]/Vn)
 xlabel('Volume (V/V_N)')
-ylabel('Free energy (F)')
+ylabel('Helmholtz Energy (F)')
 
 title(strcat('T=',num2str(5+(595/4)*(T_data(nn)-1)),'K'),'FontSize',14,'FontWeight','bold')
 % title(strcat('T=',num2str(exp(T_data(nn))-1),'K'),'FontSize',12,'FontWeight','bold')
@@ -91,7 +91,7 @@ hold on
 plot((148+(VV(:,nn)+3))/Vn, FF(:,nn),'r--','LineWidth',2.0)
 xlim([148,155]/Vn)
 xlabel('Volume (V/V_N)')
-ylabel('Free energy (F)')
+ylabel('Helmholtz Energy (F)')
 
 title(strcat('T=',num2str(5+(595/4)*(T_data(nn)-1)),'K'),'FontSize',14,'FontWeight','bold')
 % title(strcat('T=',num2str(exp(T_data(nn))-1),'K'),'FontSize',12,'FontWeight','bold')
@@ -105,7 +105,7 @@ hold on
 plot((148+(VV(:,nn)+3))/Vn, FF(:,nn),'r--','LineWidth',2.0)
 xlim([148,155]/Vn)
 xlabel('Volume (V/V_N)')
-ylabel('Free energy (F)')
+ylabel('Helmholtz Energy (F)')
 
 title(strcat('T=',num2str(5+(595/4)*(T_data(nn)-1)),'K'),'FontSize',14,'FontWeight','bold')
 % title(strcat('T=',num2str(exp(T_data(nn))-1),'K'),'FontSize',12,'FontWeight','bold')
@@ -118,7 +118,7 @@ hold on
 plot((148+(VV(:,nn)+3))/Vn, FF(:,nn),'r--','LineWidth',2.0)
 xlim([148,155]/Vn)
 xlabel('Volume (V/V_N)')
-ylabel('Free energy (F)')
+ylabel('Helmholtz Energy (F)')
 
 title(strcat('T=',num2str(5+(595/4)*(T_data(nn)-1)),'K'),'FontSize',14,'FontWeight','bold')
 % title(strcat('T=',num2str(exp(T_data(nn))-1),'K'),'FontSize',12,'FontWeight','bold')
@@ -132,7 +132,7 @@ hold on
 plot((148+(VV(:,nn)+3))/Vn, FF(:,nn),'r--','LineWidth',2.0)
 xlim([148,155]/Vn)
 xlabel('Volume (V/V_N)')
-ylabel('Free energy (F)')
+ylabel('Helmholtz Energy (F)')
 
 title(strcat('T=',num2str(5+(595/4)*(T_data(nn)-1)),'K'),'FontSize',14,'FontWeight','bold')
 % title(strcat('T=',num2str(exp(T_data(nn))-1),'K'),'FontSize',12,'FontWeight','bold')
@@ -146,7 +146,7 @@ hold on
 plot((148+(VV(:,nn)+3))/Vn, FF(:,nn),'r--','LineWidth',2.0)
 xlim([148,155]/Vn)
 xlabel('Volume (V/V_N)')
-ylabel('Free energy (F)')
+ylabel('Helmholtz Energy (F)')
 
 title(strcat('T=',num2str(5+(595/4)*(T_data(nn)-1)),'K'),'FontSize',14,'FontWeight','bold')
 % title(strcat('T=',num2str(exp(T_data(nn))-1),'K'),'FontSize',12,'FontWeight','bold')
@@ -156,7 +156,7 @@ box off
 Fig4 = figure(4);
 clf();
 set(gcf,'Position',[207,333,1181,421])
-P_CZ = load('CZ_y_pred_Fe3pt_Free_energy.txt');
+P_CZ = load('CZ_y_pred_Fe3pt_Free_Energy.txt');
 
 FN = volume_data(57:134)*sin(atan(theta));
 P_CZ = reshape(P_CZ,78,120);
@@ -170,7 +170,7 @@ hold on
 plot((148+(VV(:,nn)+3))/Vn, FF(:,nn)+FN,'r--','LineWidth',2.0)
 xlim([148,160]/Vn)
 xlabel('Volume (V/V_N)')
-ylabel('Free energy (F)')
+ylabel('Helmholtz Energy (F)')
 
 lg=legend('Zentropy','DFT');
 lg.Box = 'off';
@@ -187,7 +187,7 @@ hold on
 plot((148+(VV(:,nn)+3))/Vn, FF(:,nn)+FN,'r--','LineWidth',2.0)
 xlim([148,160]/Vn)
 xlabel('Volume (V/V_N)')
-ylabel('Free energy (F)')
+ylabel('Helmholtz Energy (F)')
 
 title(strcat('T=',num2str(5+(595/4)*(T_data(nn)-1)),'K'),'FontSize',12,'FontWeight','bold')
 % title(strcat('T=',num2str(exp(T_data(nn))-1),'K'),'FontSize',12,'FontWeight','bold')
@@ -201,7 +201,7 @@ hold on
 plot((148+(VV(:,nn)+3))/Vn, FF(:,nn)+FN,'r--','LineWidth',2.0)
 xlim([148,160]/Vn)
 xlabel('Volume (V/V_N)')
-ylabel('Free energy (F)')
+ylabel('Helmholtz Energy (F)')
 
 title(strcat('T=',num2str(5+(595/4)*(T_data(nn)-1)),'K'),'FontSize',12,'FontWeight','bold')
 % title(strcat('T=',num2str(exp(T_data(nn))-1),'K'),'FontSize',12,'FontWeight','bold')
@@ -215,7 +215,7 @@ hold on
 plot((148+(VV(:,nn)+3))/Vn, FF(:,nn)+FN,'r--','LineWidth',2.0)
 xlim([148,160]/Vn)
 xlabel('Volume (V/V_N)')
-ylabel('Free energy (F)')
+ylabel('Helmholtz Energy (F)')
 
 title(strcat('T=',num2str(5+(595/4)*(T_data(nn)-1)),'K'),'FontSize',12,'FontWeight','bold')
 % title(strcat('T=',num2str(exp(T_data(nn))-1),'K'),'FontSize',12,'FontWeight','bold')
@@ -229,7 +229,7 @@ hold on
 plot((148+(VV(:,nn)+3))/Vn, FF(:,nn)+FN,'r--','LineWidth',2.0)
 xlim([148,160]/Vn)
 xlabel('Volume (V/V_N)')
-ylabel('Free energy (F)')
+ylabel('Helmholtz Energy (F)')
 
 title(strcat('T=',num2str(5+(595/4)*(T_data(nn)-1)),'K'),'FontSize',12,'FontWeight','bold')
 % title(strcat('T=',num2str(exp(T_data(nn))-1),'K'),'FontSize',12,'FontWeight','bold')
@@ -242,7 +242,7 @@ hold on
 plot((148+(VV(:,nn)+3))/Vn, FF(:,nn)+FN,'r--','LineWidth',2.0)
 xlim([148,160]/Vn)
 xlabel('Volume (V/V_N)')
-ylabel('Free energy (F)')
+ylabel('Helmholtz Energy (F)')
 
 title(strcat('T=',num2str(5+(595/4)*(T_data(nn)-1)),'K'),'FontSize',12,'FontWeight','bold')
 % title(strcat('T=',num2str(exp(T_data(nn))-1),'K'),'FontSize',12,'FontWeight','bold')
@@ -256,7 +256,7 @@ hold on
 plot((148+(VV(:,nn)+3))/Vn, FF(:,nn)+FN,'r--','LineWidth',2.0)
 xlim([148,160]/Vn)
 xlabel('Volume (V/V_N)')
-ylabel('Free energy (F)')
+ylabel('Helmholtz Energy (F)')
 
 title(strcat('T=',num2str(5+(595/4)*(T_data(nn)-1)),'K'),'FontSize',12,'FontWeight','bold')
 % title(strcat('T=',num2str(exp(T_data(nn))-1),'K'),'FontSize',12,'FontWeight','bold')
@@ -270,7 +270,7 @@ hold on
 plot((148+(VV(:,nn)+3))/Vn, FF(:,nn)+FN,'r--','LineWidth',2.0)
 xlim([148,160]/Vn)
 xlabel('Volume (V/V_N)')
-ylabel('Free energy (F)')
+ylabel('Helmholtz Energy (F)')
 
 title(strcat('T=',num2str(5+(595/4)*(T_data(nn)-1)),'K'),'FontSize',12,'FontWeight','bold')
 % title(strcat('T=',num2str(exp(T_data(nn))-1),'K'),'FontSize',12,'FontWeight','bold')
@@ -513,7 +513,7 @@ hold on
 end
 xlim([148.5/Vn 160/Vn])
 % ylim([5,600])
-ylabel('Each Configuration of Entropy (S_i)')
+ylabel('Entropy of Each Configuration (S_i)')
 xlabel('Volume (V/V_N)')
 title ('P = 6.53 GPa, T = 5 K','FontSize',14,'FontWeight','bold')
 set(gca,'YScale','log','FontName','Helvetica','FontSize',14,'FontWeight','bold','linewidth',1.2)
@@ -532,7 +532,7 @@ end
 
 xlim([148.5/Vn 160/Vn])
 % ylim([5,600])
-ylabel('Each Configuration of Free Energy (F_i)')
+ylabel('Helmholtz Energy of Each Configuration (F_i)')
 xlabel('Volume (V/V_N)')
 title ('P = 0 GPa, T = 5 K','FontSize',14,'FontWeight','bold')
 
@@ -549,9 +549,9 @@ plot((148+(VV(:,nn)+3))/Vn, FF(:,nn),'r--','LineWidth',2.0)
 
 xlim([148,155]/Vn)
 xlabel('Volume (V/V_N)')
-ylabel('Free energy (F)')
+ylabel('Helmholtz Energy (F)')
 
-lg=legend('Zentropy','DFT');
+lg=legend('ZENN','DFT');
 lg.Box = 'off';
 
 title('P = 6.53 GPa, T = 5 K','FontSize',14,'FontWeight','bold')
@@ -569,9 +569,9 @@ plot((148+(VV(:,nn)+3))/Vn, FF(:,nn)+FN,'r--','LineWidth',2.0)
 
 xlim([148,155]/Vn)
 xlabel('Volume (V/V_N)')
-ylabel('Free energy (F)')
+ylabel('Helmholtz Energy (F)')
 
-lg=legend('Zentropy','DFT');
+lg=legend('ZENN','DFT');
 lg.Box = 'off';
 
 title('P = 0 GPa, T = 5 K','FontSize',14,'FontWeight','bold')
@@ -580,127 +580,261 @@ xlim([148.5/Vn 160/Vn])
 % ylim([5,600])
 set(gca,'FontName','Helvetica','FontSize',14,'FontWeight','bold','linewidth',1.2)
 box off
-
 %%
-fig7=figure(7);
-clf();
-set(gcf,'Position',[196,391,1215,304])
+fig9 = figure(9);
+clf;
+set(gcf,'Position',[407,94,1293,339])
+
 subplot(1,3,1)
-nn = 12;
-free_energy_d2 = free_data_d2(163:end,2:end);
-x = volume_data*cos(atan(theta))+free_energy(:,nn)*sin(atan(theta));
-ddy = free_energy_d2(:,nn);
-dy = free_energy_d1(:,nn);
-ddy = ddy.*(1+2*dy*sin(atan(theta))*cos(atan(theta)))./...
-    (cos(atan(theta))+dy*sin(atan(theta))).^3;
-
-plot(x/Vn,ddy,'k-','LineWidth',2.0)
+for i = 1:NN
+plot((148+(VV(:,10)+3))/Vn,config(:,10,2*i).^2,'color',colors(i,:),'linewidth',2.0);
 hold on
-plot((148+(linspace(-3,9,201)+3))/Vn,Hessian(:,56),'r--','LineWidth',2.0)
-hold on
-plot([0.8 1],[0 0],'color',[0.8,0.8,0.8],'LineStyle','--','LineWidth',1.2)
-
-xlim([148,154]/Vn)
-xlabel('Volume (V/V_N)')
-ylabel('\partial^2 F/\partial V^2')
-lg=legend('Zentropy','DFT');
-lg.Location = 'best';
-lg.Box = 'off';
-
-title(strcat('T=',num2str(5+(595/4)*(T_data(nn)-1)),'K'),'FontSize',12,'FontWeight','bold')
-
+end
+xlim([148.5/Vn 160/Vn])
 % ylim([5,600])
-set(gca,'FontName','Helvetica','FontSize',14,'FontWeight','bold','linewidth',1.2)
+ylabel('Entropy of Each Configuration (S_i)')
+xlabel('Volume (V/V_N)')
+title ('P = 6.53 GPa, T = 50 K','FontSize',14,'FontWeight','bold')
+set(gca,'YScale','log','FontName','Helvetica','FontSize',14,'FontWeight','bold','linewidth',1.2)
 box off
 
 subplot(1,3,2)
-nn = 24;
-free_energy_d2 = free_data_d2(163:end,2:end);
-x = volume_data*cos(atan(theta))+free_energy(:,nn)*sin(atan(theta));
-ddy = free_energy_d2(:,nn);
-dy = free_energy_d1(:,nn);
-ddy = ddy.*(1+2*dy*sin(atan(theta))*cos(atan(theta)))./...
-    (cos(atan(theta))+dy*sin(atan(theta))).^3;
-
-plot(x/Vn,ddy,'k-','LineWidth',2.0)
+for i = 1:NN
+plot((148+(VV(:,20)+3))/Vn,config(:,20,2*i).^2,'color',colors(i,:),'linewidth',2.0);
 hold on
-plot((148+(linspace(-3,9,201)+3))/Vn,Hessian(:,116),'r--','LineWidth',2.0)
-hold on
-plot([0.8 1],[0 0],'color',[0.8,0.8,0.8],'LineStyle','--','LineWidth',1.2)
-
-xlim([148,154]/Vn)
-xlabel('Volume (V/V_N)')
-ylabel('\partial^2 F/\partial V^2')
-
-
-title(strcat('T=',num2str(5+(595/4)*(T_data(nn)-1)),'K'),'FontSize',12,'FontWeight','bold')
-
+end
+xlim([148.5/Vn 160/Vn])
 % ylim([5,600])
-set(gca,'FontName','Helvetica','FontSize',14,'FontWeight','bold','linewidth',1.2)
+ylabel('Entropy of Each Configuration (S_i)')
+xlabel('Volume (V/V_N)')
+title ('P = 6.53 GPa, T = 100 K','FontSize',14,'FontWeight','bold')
+set(gca,'YScale','log','FontName','Helvetica','FontSize',14,'FontWeight','bold','linewidth',1.2)
 box off
 
+FF_50 = [];
+FF_100 = [];
+SS_50 = [];
+SS_100 = [];
+pp_50 = [];
+pp_100 = [];
+ZZ_50 = [];
+ZZ_100 = [];
+pp_50 = [];
+pp_100 = [];
+for i =1:NN
+FF_50 = [FF_50 config(:,10,2*i-1)-T_data(10)*config(:,10,2*i).^2];
+FF_100 = [FF_100 config(:,20,2*i-1)-T_data(20)*config(:,20,2*i).^2];
+SS_50 = [SS_50 config(:,10,2*i).^2];
+SS_100 = [SS_100 config(:,20,2*i).^2];
+end
+kb=0.1;r = 5;
+for i=1:NN
+ZZ_50 = [ZZ_50 exp(-FF_50(:,i)./(kb*T_data(10))-(SS_50(:,i)/r).^2)];
+ZZ_100 = [ZZ_100 exp(-FF_100(:,i)./(kb*T_data(20))-(SS_100(:,i)/r).^2)];
+end
+
+for i=1:78
+pp_50 = [pp_50; ZZ_50(i,:)./(sum(ZZ_50(i,:)))];
+pp_100 = [pp_100; ZZ_100(i,:)./(sum(ZZ_100(i,:)))];
+end
+
+S_50 =[];
+S_100 = [];
+for i=1:78
+S_50 = [S_50; sum(pp_50(i,:).*SS_50(i,:))-kb*sum(pp_50(i,:).*log(pp_50(i,:)))];
+S_100 = [S_100; sum(pp_100(i,:).*SS_100(i,:))-kb*sum(pp_100(i,:).*log(pp_100(i,:)))];
+end
 subplot(1,3,3)
-nn = 33;
-free_energy_d2 = free_data_d2(163:end,2:end);
-x = volume_data*cos(atan(theta))+free_energy(:,nn)*sin(atan(theta));
-ddy = free_energy_d2(:,nn);
-dy = free_energy_d1(:,nn);
-ddy = ddy.*(1+2*dy*sin(atan(theta))*cos(atan(theta)))./...
-    (cos(atan(theta))+dy*sin(atan(theta))).^3;
-
-plot(x/Vn,ddy,'k-','LineWidth',2.0)
+plot((148+(VV(:,nn)+3))/Vn,S_50,'color',colors(1,:),'linewidth',2.0,'LineStyle','--');
 hold on
-plot((148+(linspace(-3,9,201)+3))/Vn,Hessian(:,161),'r--','LineWidth',2.0)
-hold on
-plot([0.8 1],[0 0],'color',[0.8,0.8,0.8],'LineStyle','--','LineWidth',1.2)
+plot((148+(VV(:,nn)+3))/Vn,S_100,'color',colors(2,:),'linewidth',2.0,'LineStyle','-.');
 
-xlim([148,154]/Vn)
-ylim([-0.001,0.01])
-xlabel('Volume (V/V_N)')
-ylabel('\partial^2 F/\partial V^2')
-
-
-title(strcat('T=',num2str(5+(595/4)*(T_data(nn)-1)),'K'),'FontSize',12,'FontWeight','bold')
-
+xlim([148.5/Vn 160/Vn])
 % ylim([5,600])
-set(gca,'FontName','Helvetica','FontSize',14,'FontWeight','bold','linewidth',1.2)
-box off
-%%
-fig8=figure(8);
-clf();
-set(gcf,'Position',[493,632,309,234])
-
-nn = 33;
-free_energy_d2 = free_data_d2(163:end,2:end);
-x = volume_data*cos(atan(theta))+free_energy(:,nn)*sin(atan(theta));
-ddy = free_energy_d2(:,nn);
-dy = free_energy_d1(:,nn);
-ddy = ddy.*(1+2*dy*sin(atan(theta))*cos(atan(theta)))./...
-    (cos(atan(theta))+dy*sin(atan(theta))).^3;
-
-plot(x/Vn,ddy,'k-','LineWidth',2.0)
-hold on
-nn = 32;
-free_energy_d2 = free_data_d2(163:end,2:end);
-x = volume_data*cos(atan(theta))+free_energy(:,nn)*sin(atan(theta));
-ddy = free_energy_d2(:,nn);
-dy = free_energy_d1(:,nn);
-ddy = ddy.*(1+2*dy*sin(atan(theta))*cos(atan(theta)))./...
-    (cos(atan(theta))+dy*sin(atan(theta))).^3;
-
-plot(x/Vn,ddy,'r--','LineWidth',2.0)
-hold on
-plot([0.8 1],[0 0],'color',[0.8,0.8,0.8],'LineStyle','--','LineWidth',1.2)
-
-xlim([0.955,0.961])
-ylim([-0.4,1]*10^-3)
-xlabel('Volume (V/V_N)')
-ylabel('\partial^2 F/\partial V^2')
-lg=legend('T = 165K','T = 160K');
-lg.Location = 'best';
+lg=legend('T = 50 K','T = 100 K');
 lg.Box = 'off';
-
-
-% ylim([5,600])
-set(gca,'FontName','Helvetica','FontSize',14,'FontWeight','bold','linewidth',1.2)
+ylabel('Total Entropy (S)')
+xlabel('Volume (V/V_N)')
+title ('P = 6.53 GPa','FontSize',14,'FontWeight','bold')
+set(gca,'YScale','log','FontName','Helvetica','FontSize',14,'FontWeight','bold','linewidth',1.2)
 box off
+
+%%
+fig10 = figure(10);
+clf();
+set(gcf,'Position',[407,94,919,700])
+subplot(2,2,1)
+for i = 1:NN
+plot((148+(VV(:,10)+3))/Vn,config(:,10,2*i-1),'color',colors(i,:),'linewidth',2.0);
+hold on
+end
+xlim([148.5/Vn 160/Vn])
+% ylim([5,600])
+ylabel('Enthalpy of Each Configuration (E_i+PV)')
+xlabel('Volume (V/V_N)')
+title ('P = 0 GPa, T = 50 K','FontSize',14,'FontWeight','bold')
+set(gca,'YScale','linear','FontName','Helvetica','FontSize',14,'FontWeight','bold','linewidth',1.2)
+box off
+
+subplot(2,2,3)
+for i = 1:NN
+plot((148+(VV(:,20)+3))/Vn,config(:,20,2*i-1),'color',colors(i,:),'linewidth',2.0);
+hold on
+end
+xlim([148.5/Vn 160/Vn])
+% ylim([5,600])
+ylabel('Enthalpy of Each Configuration (E_i+PV)')
+xlabel('Volume (V/V_N)')
+title ('P = 0 GPa, T = 100 K','FontSize',14,'FontWeight','bold')
+set(gca,'YScale','linear','FontName','Helvetica','FontSize',14,'FontWeight','bold','linewidth',1.2)
+box off
+
+
+subplot(2,2,2)
+for i = 1:NN
+plot((148+(VV(:,10)+3))/Vn,config(:,10,2*i-1)+0.0408*VV(:,10),'color',colors(i,:),'linewidth',2.0);
+hold on
+end
+xlim([148.5/Vn 160/Vn])
+% ylim([5,600])
+ylabel('Enthalpy of Each Configuration (E_i+PV)')
+xlabel('Volume (V/V_N)')
+title ('P = 6.53 GPa, T = 50 K','FontSize',14,'FontWeight','bold')
+set(gca,'YScale','linear','FontName','Helvetica','FontSize',14,'FontWeight','bold','linewidth',1.2)
+box off
+
+subplot(2,2,4)
+for i = 1:NN
+plot((148+(VV(:,20)+3))/Vn,config(:,20,2*i-1)+0.0408*VV(:,20),'color',colors(i,:),'linewidth',2.0);
+hold on
+end
+xlim([148.5/Vn 160/Vn])
+% ylim([5,600])
+ylabel('Enthalpy of Each Configuration (E_i+PV)')
+xlabel('Volume (V/V_N)')
+title ('P = 6.53 GPa, T = 100 K','FontSize',14,'FontWeight','bold')
+set(gca,'YScale','linear','FontName','Helvetica','FontSize',14,'FontWeight','bold','linewidth',1.2)
+box off
+% %%
+% fig7=figure(7);
+% clf();
+% set(gcf,'Position',[196,391,1215,304])
+% subplot(1,3,1)
+% nn = 12;
+% free_Energy_d2 = free_data_d2(163:end,2:end);
+% x = volume_data*cos(atan(theta))+free_Energy(:,nn)*sin(atan(theta));
+% ddy = free_Energy_d2(:,nn);
+% dy = free_Energy_d1(:,nn);
+% ddy = ddy.*(1+2*dy*sin(atan(theta))*cos(atan(theta)))./...
+%     (cos(atan(theta))+dy*sin(atan(theta))).^3;
+% 
+% plot(x/Vn,ddy,'k-','LineWidth',2.0)
+% hold on
+% plot((148+(linspace(-3,9,201)+3))/Vn,Hessian(:,56),'r--','LineWidth',2.0)
+% hold on
+% plot([0.8 1],[0 0],'color',[0.8,0.8,0.8],'LineStyle','--','LineWidth',1.2)
+% 
+% xlim([148,154]/Vn)
+% xlabel('Volume (V/V_N)')
+% ylabel('\partial^2 F/\partial V^2')
+% lg=legend('Zentropy','DFT');
+% lg.Location = 'best';
+% lg.Box = 'off';
+% 
+% title(strcat('T=',num2str(5+(595/4)*(T_data(nn)-1)),'K'),'FontSize',12,'FontWeight','bold')
+% 
+% % ylim([5,600])
+% set(gca,'FontName','Helvetica','FontSize',14,'FontWeight','bold','linewidth',1.2)
+% box off
+% 
+% subplot(1,3,2)
+% nn = 24;
+% free_Energy_d2 = free_data_d2(163:end,2:end);
+% x = volume_data*cos(atan(theta))+free_Energy(:,nn)*sin(atan(theta));
+% ddy = free_Energy_d2(:,nn);
+% dy = free_Energy_d1(:,nn);
+% ddy = ddy.*(1+2*dy*sin(atan(theta))*cos(atan(theta)))./...
+%     (cos(atan(theta))+dy*sin(atan(theta))).^3;
+% 
+% plot(x/Vn,ddy,'k-','LineWidth',2.0)
+% hold on
+% plot((148+(linspace(-3,9,201)+3))/Vn,Hessian(:,116),'r--','LineWidth',2.0)
+% hold on
+% plot([0.8 1],[0 0],'color',[0.8,0.8,0.8],'LineStyle','--','LineWidth',1.2)
+% 
+% xlim([148,154]/Vn)
+% xlabel('Volume (V/V_N)')
+% ylabel('\partial^2 F/\partial V^2')
+% 
+% 
+% title(strcat('T=',num2str(5+(595/4)*(T_data(nn)-1)),'K'),'FontSize',12,'FontWeight','bold')
+% 
+% % ylim([5,600])
+% set(gca,'FontName','Helvetica','FontSize',14,'FontWeight','bold','linewidth',1.2)
+% box off
+% 
+% subplot(1,3,3)
+% nn = 33;
+% free_Energy_d2 = free_data_d2(163:end,2:end);
+% x = volume_data*cos(atan(theta))+free_Energy(:,nn)*sin(atan(theta));
+% ddy = free_Energy_d2(:,nn);
+% dy = free_Energy_d1(:,nn);
+% ddy = ddy.*(1+2*dy*sin(atan(theta))*cos(atan(theta)))./...
+%     (cos(atan(theta))+dy*sin(atan(theta))).^3;
+% 
+% plot(x/Vn,ddy,'k-','LineWidth',2.0)
+% hold on
+% plot((148+(linspace(-3,9,201)+3))/Vn,Hessian(:,161),'r--','LineWidth',2.0)
+% hold on
+% plot([0.8 1],[0 0],'color',[0.8,0.8,0.8],'LineStyle','--','LineWidth',1.2)
+% 
+% xlim([148,154]/Vn)
+% ylim([-0.001,0.01])
+% xlabel('Volume (V/V_N)')
+% ylabel('\partial^2 F/\partial V^2')
+% 
+% 
+% title(strcat('T=',num2str(5+(595/4)*(T_data(nn)-1)),'K'),'FontSize',12,'FontWeight','bold')
+% 
+% % ylim([5,600])
+% set(gca,'FontName','Helvetica','FontSize',14,'FontWeight','bold','linewidth',1.2)
+% box off
+% %%
+% fig8=figure(8);
+% clf();
+% set(gcf,'Position',[493,632,309,234])
+% 
+% nn = 33;
+% free_energy_d2 = free_data_d2(163:end,2:end);
+% x = volume_data*cos(atan(theta))+free_Energy(:,nn)*sin(atan(theta));
+% ddy = free_energy_d2(:,nn);
+% dy = free_Energy_d1(:,nn);
+% ddy = ddy.*(1+2*dy*sin(atan(theta))*cos(atan(theta)))./...
+%     (cos(atan(theta))+dy*sin(atan(theta))).^3;
+% 
+% plot(x/Vn,ddy,'k-','LineWidth',2.0)
+% hold on
+% nn = 32;
+% free_energy_d2 = free_data_d2(163:end,2:end);
+% x = volume_data*cos(atan(theta))+free_Energy(:,nn)*sin(atan(theta));
+% ddy = free_Energy_d2(:,nn);
+% dy = free_Energy_d1(:,nn);
+% ddy = ddy.*(1+2*dy*sin(atan(theta))*cos(atan(theta)))./...
+%     (cos(atan(theta))+dy*sin(atan(theta))).^3;
+% 
+% plot(x/Vn,ddy,'r--','LineWidth',2.0)
+% hold on
+% plot([0.8 1],[0 0],'color',[0.8,0.8,0.8],'LineStyle','--','LineWidth',1.2)
+% 
+% xlim([0.955,0.961])
+% ylim([-0.4,1]*10^-3)
+% xlabel('Volume (V/V_N)')
+% ylabel('\partial^2 F/\partial V^2')
+% lg=legend('T = 165K','T = 160K');
+% lg.Location = 'best';
+% lg.Box = 'off';
+% 
+% 
+% % ylim([5,600])
+% set(gca,'FontName','Helvetica','FontSize',14,'FontWeight','bold','linewidth',1.2)
+% box off
